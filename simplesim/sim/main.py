@@ -13,15 +13,24 @@ MAX_POP_CHANGE: int = 100
 class SimpleSimulation:
     """Main Class for the Simulation"""
 
-    def __init__(self, years: int) -> None:
+    def __init__(
+        self,
+        years: int,
+        min_pop_start: int = MIN_POP_START,
+        max_pop_start: int = MAX_POP_START,
+        min_resource_start: int = MIN_RESOURCE_START,
+        max_resource_start: int = MAX_RESOURCE_START,
+    ) -> None:
         self.years: int = years
-        self.population: int = randint(MIN_POP_START, MAX_POP_START)
-        self.resources: int = randint(MIN_RESOURCE_START, MAX_RESOURCE_START)
+        self.population: int = randint(min_pop_start, max_pop_start)
+        self.resources: int = randint(min_resource_start, max_resource_start)
 
         self.pop_data: list = []
         self.resource_data: list = []
 
-    def run_sim(self) -> dict:
+    def run(
+        self, min_pop_change: int = MIN_POP_CHANGE, max_pop_change: int = MAX_POP_CHANGE
+    ) -> dict:
         """Run the Simulation"""
 
         for _ in range(self.years):
@@ -31,7 +40,7 @@ class SimpleSimulation:
             if self.resources == 0:
                 break
 
-            pop_change: int = randint(MIN_POP_CHANGE, MAX_POP_CHANGE)
+            pop_change: int = randint(min_pop_change, max_pop_change)
             self.population += pop_change
             self.resources = max(0, self.resources - pop_change)
 
