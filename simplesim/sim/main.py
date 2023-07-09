@@ -1,6 +1,7 @@
 """Main Module for the Simple Simulation"""
 
 from random import randint
+import sys
 
 MIN_POP_START: int = 100
 MAX_POP_START: int = 1000
@@ -45,3 +46,10 @@ class SimpleSimulation:
             self.resources = max(0, self.resources - pop_change)
 
         return {"pop_data": self.pop_data, "resource_data": self.resource_data}
+
+
+if __name__ == "__main__":
+    sim = SimpleSimulation(int(sys.argv[1]))
+
+    ## TODO: Do something with this data
+    output = sim.run()
