@@ -53,3 +53,4 @@ if __name__ == "__main__":
 
     ## TODO: Do something with this data
     output = sim.run()
+    print(output)
