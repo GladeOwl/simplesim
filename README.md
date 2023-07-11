@@ -1,3 +1,3 @@
 # Simple Sim
 
-A simple simulation that runs on docker and kubernetes
+A simple simulation that runs on docker
